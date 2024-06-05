@@ -1,3 +1,5 @@
+// U5223-1368
+
 class Ball {
     constructor(x, y, radius, dx, dy, color) {
         this.x = x;
@@ -15,6 +17,17 @@ class Ball {
         ctx.fill();
         ctx.closePath();
     }
+
+    update(canvas) {
+        if (this.x + this.dx > canvas.width - this.radius || this.x + this.dx < this.radius) {
+            this.dx = -this.dx;
+        }
+        if (this.y + this.dy > canvas.height - this.radius || this.y + this.dy < this.radius) {
+            this.dy = -this.dy;
+        }
+        this.x += this.dx;
+        this.y += this.dy;
+    }
 }
 
 const canvas = document.getElementById('myCanvas');
@@ -24,6 +37,7 @@ const ball = new Ball(200, 160, 20, 2, 2, 'red');
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ball.draw(ctx);
+    ball.update(canvas);
 }
 
 setInterval(animate, 8);
