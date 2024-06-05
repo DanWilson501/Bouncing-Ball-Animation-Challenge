@@ -8,12 +8,15 @@ class Ball {
         this.color = color;
     }
 
-    draw(context) {
-        context.beginPath();
-        context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        context.fillStyle = this.color;
-        context.fill();
-        context.closePath();
+    draw(ctx) {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.closePath();
     }
-
 }
+
+const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+const ball = new Ball(200, 160, 20, 2, 2, 'red');
