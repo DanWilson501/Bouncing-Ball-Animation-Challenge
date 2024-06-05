@@ -25,3 +25,5 @@ function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ball.draw(ctx);
 }
+
+setInterval(animate, 8);
